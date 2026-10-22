@@ -22,9 +22,7 @@ Telas a partir de 900 px mostram o `hero.webp` em tela cheia; abaixo disso, o `p
 
 ## Antes de publicar
 
-No `index.html`, troque:
-- `55SEUNUMERO` pelo número do WhatsApp com DDD (ex.: `5573999999999`);
-- `href="#"` do botão "Sites que já entreguei" pelo link do portfólio.
+No `index.html`, troque `55SEUNUMERO` pelo número do WhatsApp com DDD (ex.: `5573999999999`).
 
 ## Rodar local
 
