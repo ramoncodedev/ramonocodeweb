@@ -1,0 +1,23 @@
+/* Rodapé */
+
+.foot {
+  padding: 2.2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.foot b { font-weight: 600; color: var(--ice); }
+
+@media (min-width: 900px) {
+  .foot {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    bottom: 1.2rem;
+    padding: 0;
+    font-size: .8rem;
+    text-align: center;
+  }
+}

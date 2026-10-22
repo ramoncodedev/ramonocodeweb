@@ -1,0 +1,86 @@
+/* Retrato (Android.png no celular, HERO.png no computador) e reflexo na lente */
+
+/* ── Celular ── */
+.hero {
+  position: relative;
+  aspect-ratio: 1167 / 1900;
+  background: var(--ink);
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+/* funde a base do retrato no preto da página */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    var(--ink) 0%, var(--ink) 12%, rgba(2, 6, 15, .75) 26%, transparent 52%);
+}
+
+/* Reflexo que atravessa a lente uma vez, quando a página abre */
+.lens {
+  position: absolute;
+  z-index: 2;
+  left: 16%;
+  top: 38.2%;
+  width: 64%;
+  height: 11.4%;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  clip-path: polygon(0 8%, 100% 12%, 97% 52%, 70% 96%, 56% 60%, 48% 60%, 38% 96%, 6% 78%);
+}
+
+.lens::before {
+  content: "";
+  position: absolute;
+  inset: -20% 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(190, 225, 255, .9) 50%, transparent);
+  transform: translateX(-120%) skewX(-18deg);
+  animation: sweep 1.3s .5s cubic-bezier(.5, 0, .2, 1) 1 forwards;
+}
+
+@keyframes sweep {
+  to { transform: translateX(330%) skewX(-18deg); }
+}
+
+/* ── Computador: o retrato cobre a tela inteira ── */
+@media (min-width: 900px) {
+  /* palco com a proporção da foto: cobre a tela e mantém a lente no lugar certo */
+  .hero {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100vw, calc(max(100svh, 640px) * 1.5967));
+    aspect-ratio: 3832 / 2400;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero::after { display: none; }
+  .hero picture { display: contents; }
+
+  .lens {
+    left: 35.6%;
+    top: 34%;
+    width: 26.6%;
+    height: 10.6%;
+    clip-path: polygon(2% 16%, 98% 14%, 97% 52%, 88% 78%, 70% 94%, 56% 90%, 51% 58%, 46% 58%, 38% 92%, 16% 88%, 4% 62%);
+  }
+
+  .lens::before {
+    background: linear-gradient(100deg, transparent, rgba(190, 225, 255, .6) 50%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens::before { animation: none; opacity: 0; }
+}

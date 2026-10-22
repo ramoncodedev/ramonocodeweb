@@ -1,0 +1,68 @@
+/* Bloco de apresentação: nome, função, headline e subtítulo */
+
+.intro {
+  position: relative;
+  z-index: 3;
+  margin-top: -8.2rem;   /* sobe sobre a base escura do retrato */
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 800;
+  font-size: min(11.4vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -.055em;
+  color: #fff;
+  text-shadow: 0 0 36px rgba(47, 140, 255, .55);
+}
+
+.role {
+  margin-top: .7rem;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--lens);
+}
+
+.headline {
+  max-width: 20ch;
+  margin-top: 1.1rem;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.pitch {
+  max-width: 34ch;
+  margin-top: .8rem;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+@media (max-width: 359px) {
+  h1 { font-size: 2.4rem; }
+}
+
+/* Computador: bloco ancorado no canto inferior esquerdo */
+@media (min-width: 900px) {
+  .intro {
+    position: absolute;
+    z-index: 3;
+    left: max(3rem, 4.5vw);
+    bottom: max(3rem, 8svh);
+    width: min(33vw, 440px);
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 { font-size: min(4vw, 3.7rem); }
+  .role { font-size: 1.02rem; }
+  .headline { max-width: 19ch; font-size: clamp(1.5rem, 2.1vw, 1.95rem); }
+  .pitch { max-width: 34ch; font-size: 1.05rem; }
+}

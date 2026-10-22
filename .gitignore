@@ -1,0 +1,4 @@
+# imagens originais pesadas (só ficam no computador)
+assets/originais/
+.DS_Store
+Thumbs.db

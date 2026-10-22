@@ -1,256 +1,82 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ramonocode · sites que vendem por você</title>
-<meta name="description" content="Do primeiro clique à decisão, eu crio sites que valorizam sua marca e geram clientes.">
-<meta name="theme-color" content="#02060f">
-<meta property="og:title" content="ramonocode">
-<meta property="og:description" content="Sua marca merece ter um site que realmente vende por você.">
-<meta property="og:image" content="img/portrait.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2302060f'/%3E%3Cpath d='M8 26h48l-6 16a6 6 0 0 1-5 4H34l-4-6-4 6H19a6 6 0 0 1-5-4z' fill='%232f8cff'/%3E%3C/svg%3E">
-<link rel="preload" href="fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/portrait.webp" as="image" media="(max-width:899px)">
-<link rel="preload" href="img/hero.webp" as="image" media="(min-width:900px)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<style>
-@font-face{font-family:"Unbounded";src:url("fonts/unbounded-latin-wght-normal.woff2") format("woff2");font-weight:200 900;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");font-weight:200 800;font-display:swap}
+  <title>ramonocode · sites que vendem por você</title>
+  <meta name="description" content="Do primeiro clique à decisão, eu crio sites que valorizam sua marca e geram clientes.">
+  <meta name="theme-color" content="#02060f">
 
-:root{
-  --ink:#02060f;
-  --panel:#050b18;
-  --ice:#d6ebff;
-  --lens:#6db8ff;
-  --volt:#2f8cff;
-  --muted:#93aac6;
-  --brasa:#ff5722;
-  --cut:16px; /* o corte angular dos botões, herdado da armação do óculos */
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{
-  min-height:100svh;
-  background:var(--ink);
-  color:var(--ice);
-  font-family:"Bricolage Grotesque",system-ui,sans-serif;
-  font-size:1rem;line-height:1.45;
-  -webkit-font-smoothing:antialiased;
-}
-/* fundo de tela grande: a luz azul do retrato vaza para os lados */
-body::before{
-  content:"";position:fixed;inset:0;z-index:-1;
-  background:
-    radial-gradient(60% 50% at 50% 38%,rgba(47,140,255,.28),transparent 70%),
-    linear-gradient(rgba(2,6,15,.55),rgba(2,6,15,.9)),
-    url("img/hero.webp") center/cover no-repeat;
-  filter:saturate(1.1);
-}
+  <meta property="og:title" content="ramonocode">
+  <meta property="og:description" content="Sua marca merece ter um site que realmente vende por você.">
+  <meta property="og:image" content="assets/img/portrait.webp">
 
-.page{
-  width:100%;max-width:460px;margin:0 auto;
-  background:var(--ink);
-  min-height:100svh;
-  overflow:hidden;
-  box-shadow:0 0 0 1px rgba(109,184,255,.12),0 0 120px rgba(47,140,255,.25);
-}
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2302060f'/%3E%3Cpath d='M8 26h48l-6 16a6 6 0 0 1-5 4H34l-4-6-4 6H19a6 6 0 0 1-5-4z' fill='%232f8cff'/%3E%3C/svg%3E">
 
-/* ───────── retrato ───────── */
-.hero{position:relative;aspect-ratio:1167/1900;background:var(--ink)}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.hero::after{ /* funde a base do retrato no preto da página */
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(to top,var(--ink) 0%,var(--ink) 12%,rgba(2,6,15,.75) 26%,transparent 52%);
-}
-/* reflexo que atravessa a lente, uma vez, quando a página abre */
-.lens{
-  position:absolute;z-index:2;pointer-events:none;
-  left:16%;top:38.2%;width:64%;height:11.4%;
-  clip-path:polygon(0 8%,100% 12%,97% 52%,70% 96%,56% 60%,48% 60%,38% 96%,6% 78%);
-  mix-blend-mode:screen;overflow:hidden;
-}
-.lens::before{
-  content:"";position:absolute;inset:-20% 0;width:40%;
-  background:linear-gradient(100deg,transparent,rgba(190,225,255,.9) 50%,transparent);
-  transform:translateX(-120%) skewX(-18deg);
-  animation:sweep 1.3s .5s cubic-bezier(.5,0,.2,1) 1 forwards;
-}
-.hero:active .lens::before{animation:none;transform:translateX(-120%) skewX(-18deg)}
-@keyframes sweep{to{transform:translateX(330%) skewX(-18deg)}}
+  <!-- carrega só a imagem do tamanho de tela certo -->
+  <link rel="preload" href="assets/fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/portrait.webp" as="image" media="(max-width: 899px)">
+  <link rel="preload" href="assets/img/hero.webp" as="image" media="(min-width: 900px)">
 
-/* ───────── nome ───────── */
-.intro{position:relative;z-index:3;margin-top:-8.2rem;padding:0 1.5rem}
-h1{
-  font-family:"Unbounded",sans-serif;font-weight:800;
-  font-size:min(11.4vw,3.2rem);line-height:1;
-  letter-spacing:-.055em;
-  color:#fff;
-  text-shadow:0 0 36px rgba(47,140,255,.55);
-}
-.role{margin-top:.7rem;font-weight:600;font-size:.95rem;color:var(--lens);letter-spacing:.01em}
-.headline{
-  margin-top:1.1rem;max-width:20ch;
-  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
-  font-size:1.65rem;line-height:1.08;letter-spacing:-.025em;color:#fff;
-  text-wrap:balance;
-}
-.pitch{margin-top:.8rem;max-width:34ch;font-size:1.02rem;line-height:1.45;color:var(--muted)}
-
-/* ───────── links ───────── */
-.links{list-style:none;display:grid;gap:.9rem;padding:1.9rem 1.5rem 0}
-
-.btn{
-  --edge:linear-gradient(135deg,#8cc8ff,#1c5fc4 45%,#0a2a5c);
-  --fill:var(--panel);
-  --fg:var(--ice);--sub:var(--muted);
-  position:relative;isolation:isolate;display:flex;align-items:center;gap:1rem;
-  padding:1.1rem 1.15rem 1.1rem 1.3rem;min-height:4.4rem;
-  color:var(--fg);text-decoration:none;
-  background:var(--edge);
-  clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)));
-  -webkit-tap-highlight-color:transparent;
-}
-.btn::before{ /* miolo, 1px menor que a borda */
-  content:"";position:absolute;inset:1px;z-index:-1;
-  background:
-    linear-gradient(105deg,transparent 38%,rgba(150,205,255,.28) 50%,transparent 62%) 130% 0/260% 100% no-repeat,
-    var(--fill);
-  clip-path:polygon(0 0,calc(100% - var(--cut) + 1px) 0,100% calc(var(--cut) - 1px),100% 100%,calc(var(--cut) - 1px) 100%,0 calc(100% - var(--cut) + 1px));
-  transition:background-position .7s cubic-bezier(.3,0,.2,1);
-}
-.btn:hover::before,.btn:focus-visible::before{background-position:-30% 0,0 0}
-.btn:focus-visible{outline:2px solid #fff;outline-offset:3px;clip-path:none}
-.btn:active{transform:scale(.985)}
-
-.txt{flex:1;min-width:0}
-.title{display:block;font-family:"Unbounded",sans-serif;font-weight:600;font-size:.98rem;line-height:1.2;letter-spacing:-.02em;color:var(--fg)}
-.sub{display:block;margin-top:.25rem;font-size:.86rem;color:var(--sub)}
-.go{flex:none;width:2.1rem;height:2.1rem;display:grid;place-items:center;border-radius:50%;
-  background:rgba(109,184,255,.14);transition:transform .3s}
-.go svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.btn:hover .go{transform:translate(2px,-2px)}
-
-/* principal: a lente acesa */
-.btn.main{
-  --edge:linear-gradient(135deg,#fff,#7fc3ff 50%,#2f8cff);
-  --fg:#021024;--sub:#0d3568;
-  min-height:5.4rem;
-  box-shadow:0 0 0 transparent;
-}
-.btn.main::before{
-  background:
-    linear-gradient(105deg,transparent 38%,rgba(255,255,255,.65) 50%,transparent 62%) 130% 0/260% 100% no-repeat,
-    linear-gradient(135deg,#d9edff,#6db8ff);
-}
-.btn.main .title{font-size:1.1rem}
-.btn.main .sub{font-weight:500}
-.btn.main .go{background:#021024;color:var(--lens)}
-.mainwrap{filter:drop-shadow(0 10px 34px rgba(47,140,255,.45))}
-
-/* ───────── rodapé ───────── */
-.foot{padding:2.2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));color:var(--muted);font-size:.84rem;line-height:1.5}
-.foot b{color:var(--ice);font-weight:600}
-
-@media (max-width:359px){h1{font-size:2.4rem}}
-
-/* ───────── computador: HERO.png em tela cheia ───────── */
-@media (min-width:900px){
-  body::before{display:none}
-  .page{
-    position:relative;max-width:none;height:100svh;min-height:640px;
-    box-shadow:none;
-  }
-  /* palco com a proporção da foto: cobre a tela e mantém a lente no lugar certo */
-  .hero{
-    position:absolute;left:50%;top:50%;
-    width:max(100vw,calc(max(100svh,640px) * 1.5967));
-    aspect-ratio:3832/2400;
-    transform:translate(-50%,-50%);
-  }
-  .hero::after{display:none}
-  .hero picture{display:contents}
-  .lens{
-    left:35.6%;top:34%;width:26.6%;height:10.6%;
-    clip-path:polygon(2% 16%,98% 14%,97% 52%,88% 78%,70% 94%,56% 90%,51% 58%,46% 58%,38% 92%,16% 88%,4% 62%);
-  }
-  .lens::before{background:linear-gradient(100deg,transparent,rgba(190,225,255,.6) 50%,transparent)}
-  .page::after{ /* escurece as laterais e a base para o texto respirar */
-    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:
-      linear-gradient(to top,rgba(2,6,15,.92) 0%,rgba(2,6,15,.55) 24%,transparent 48%),
-      linear-gradient(to right,rgba(2,6,15,.82) 0%,rgba(2,6,15,.35) 26%,transparent 38%,transparent 62%,rgba(2,6,15,.35) 74%,rgba(2,6,15,.82) 100%);
-  }
-  .intro{
-    position:absolute;z-index:3;left:max(3rem,4.5vw);bottom:max(3rem,8svh);
-    margin:0;padding:0;width:min(33vw,440px);
-  }
-  h1{font-size:min(4vw,3.7rem)}
-  .role{font-size:1.02rem}
-  .headline{font-size:clamp(1.5rem,2.1vw,1.95rem);max-width:19ch}
-  .pitch{font-size:1.05rem;max-width:34ch}
-  .links{
-    position:absolute;z-index:3;right:max(3rem,4.5vw);bottom:max(3rem,8svh);
-    width:clamp(300px,29vw,400px);padding:0;gap:1rem;
-  }
-  .foot{
-    position:absolute;z-index:3;left:0;right:0;bottom:1.2rem;padding:0;text-align:center;
-    font-size:.8rem;
-  }
-}
-@media (prefers-reduced-motion:reduce){
-  .lens::before{animation:none;opacity:0}
-  .btn::before,.go{transition:none}
-}
-</style>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/links.css">
+  <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
-<main class="page">
+  <main class="page">
 
-  <header class="hero">
-    <picture>
-      <source media="(min-width:900px)" srcset="img/hero.webp">
-      <img src="img/portrait.webp" alt="Retrato de Ramon com óculos esportivo espelhado, sob luz azul" width="1000" height="1714" fetchpriority="high">
-    </picture>
-    <span class="lens" aria-hidden="true"></span>
-  </header>
+    <!-- Retrato: Android.png no celular, HERO.png no computador -->
+    <header class="hero">
+      <picture>
+        <source media="(min-width: 900px)" srcset="assets/img/hero.webp">
+        <img src="assets/img/portrait.webp" alt="Retrato de Ramon com óculos esportivo espelhado, sob luz azul" width="1000" height="1714" fetchpriority="high">
+      </picture>
+      <span class="lens" aria-hidden="true"></span>
+    </header>
 
-  <section class="intro">
-    <h1>ramonocode</h1>
-    <p class="role">Desenvolvedor web</p>
-    <h2 class="headline">Sua marca merece ter um site que realmente vende por você</h2>
-    <p class="pitch">Do primeiro clique à decisão, eu crio sites que valorizam sua marca e geram clientes.</p>
-  </section>
+    <!-- Apresentação -->
+    <section class="intro">
+      <h1>ramonocode</h1>
+      <p class="role">Desenvolvedor web</p>
+      <h2 class="headline">Sua marca merece ter um site que realmente vende por você</h2>
+      <p class="pitch">Do primeiro clique à decisão, eu crio sites que valorizam sua marca e geram clientes.</p>
+    </section>
 
-  <ul class="links">
-    <li class="mainwrap">
-      <a class="btn main" id="wa" href="https://wa.me/55SEUNUMERO?text=Oi%20Ramon%2C%20vi%20seu%20Instagram%20e%20quero%20um%20site%20para%20o%20meu%20neg%C3%B3cio.">
-        <span class="txt">
-          <span class="title">Quero um site para o meu negócio</span>
-          <span class="sub">Orçamento direto no WhatsApp</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-      </a>
-    </li>
+    <!-- Links -->
+    <ul class="links">
+      <li class="mainwrap">
+        <!-- TROCAR: 55SEUNUMERO pelo seu WhatsApp com DDD (ex.: 5573999999999) -->
+        <a class="btn main" href="https://wa.me/55SEUNUMERO?text=Oi%20Ramon%2C%20vi%20seu%20Instagram%20e%20quero%20um%20site%20para%20o%20meu%20neg%C3%B3cio.">
+          <span class="txt">
+            <span class="title">Quero um site para o meu negócio</span>
+            <span class="sub">Orçamento direto no WhatsApp</span>
+          </span>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+      </li>
 
-    <li>
-      <a class="btn" id="portfolio" href="#">
-        <span class="txt">
-          <span class="title">Sites que já entreguei</span>
-          <span class="sub">Portfólio de projetos reais</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-      </a>
-    </li>
+      <li>
+        <!-- TROCAR: href="#" pelo link do seu portfólio -->
+        <a class="btn" href="#">
+          <span class="txt">
+            <span class="title">Sites que já entreguei</span>
+            <span class="sub">Portfólio de projetos reais</span>
+          </span>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+      </li>
+    </ul>
 
-  </ul>
+    <footer class="foot">
+      <p><b>@ramonocode</b> · feito à mão, sem template.</p>
+    </footer>
 
-  <footer class="foot">
-    <p><b>@ramonocode</b> · feito à mão, sem template.</p>
-  </footer>
-
-</main>
+  </main>
 </body>
 </html>

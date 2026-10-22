@@ -1,0 +1,130 @@
+/* Botões de link: moldura com cantos cortados (como a armação do óculos) */
+
+.links {
+  display: grid;
+  gap: .9rem;
+  padding: 1.9rem 1.5rem 0;
+  list-style: none;
+}
+
+/* ── Botão base (secundário) ── */
+.btn {
+  --edge: linear-gradient(135deg, #8cc8ff, #1c5fc4 45%, #0a2a5c);  /* cor da borda */
+  --fill: var(--panel);                                            /* cor do miolo */
+  --fg: var(--ice);
+  --sub: var(--muted);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4.4rem;
+  padding: 1.1rem 1.15rem 1.1rem 1.3rem;
+  color: var(--fg);
+  text-decoration: none;
+  background: var(--edge);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* miolo, 1px menor que a borda, com o brilho que corre no hover */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background:
+    linear-gradient(105deg, transparent 38%, rgba(150, 205, 255, .28) 50%, transparent 62%) 130% 0 / 260% 100% no-repeat,
+    var(--fill);
+  clip-path: polygon(0 0, calc(100% - var(--cut) + 1px) 0, 100% calc(var(--cut) - 1px), 100% 100%, calc(var(--cut) - 1px) 100%, 0 calc(100% - var(--cut) + 1px));
+  transition: background-position .7s cubic-bezier(.3, 0, .2, 1);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before { background-position: -30% 0, 0 0; }
+
+.btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; clip-path: none; }
+.btn:active { transform: scale(.985); }
+
+/* ── Conteúdo do botão ── */
+.txt { flex: 1; min-width: 0; }
+
+.title {
+  display: block;
+  font-family: "Unbounded", sans-serif;
+  font-size: .98rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  color: var(--fg);
+}
+
+.sub {
+  display: block;
+  margin-top: .25rem;
+  font-size: .86rem;
+  color: var(--sub);
+}
+
+.go {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: rgba(109, 184, 255, .14);
+  transition: transform .3s;
+}
+
+.go svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn:hover .go { transform: translate(2px, -2px); }
+
+/* ── Botão principal: a lente acesa ── */
+.btn.main {
+  --edge: linear-gradient(135deg, #fff, #7fc3ff 50%, #2f8cff);
+  --fg: #021024;
+  --sub: #0d3568;
+  min-height: 5.4rem;
+}
+
+.btn.main::before {
+  background:
+    linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .65) 50%, transparent 62%) 130% 0 / 260% 100% no-repeat,
+    linear-gradient(135deg, #d9edff, #6db8ff);
+}
+
+.btn.main .title { font-size: 1.1rem; }
+.btn.main .sub { font-weight: 500; }
+.btn.main .go { background: #021024; color: var(--lens); }
+
+/* o brilho fica no <li>, porque clip-path cortaria a sombra do próprio botão */
+.mainwrap { filter: drop-shadow(0 10px 34px rgba(47, 140, 255, .45)); }
+
+/* Computador: botões ancorados no canto inferior direito */
+@media (min-width: 900px) {
+  .links {
+    position: absolute;
+    z-index: 3;
+    right: max(3rem, 4.5vw);
+    bottom: max(3rem, 8svh);
+    width: clamp(300px, 29vw, 400px);
+    gap: 1rem;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before,
+  .go { transition: none; }
+}

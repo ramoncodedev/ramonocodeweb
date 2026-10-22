@@ -1,0 +1,80 @@
+/* Base: variáveis de cor, reset, corpo da página e o contêiner .page */
+
+:root {
+  --ink: #02060f;     /* fundo */
+  --panel: #050b18;   /* miolo dos botões secundários */
+  --ice: #d6ebff;     /* texto principal */
+  --lens: #6db8ff;    /* azul de destaque (reflexo da lente) */
+  --volt: #2f8cff;    /* azul elétrico */
+  --muted: #93aac6;   /* texto de apoio */
+  --cut: 16px;        /* corte angular dos botões, herdado da armação do óculos */
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100svh;
+  background: var(--ink);
+  color: var(--ice);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fundo para tablets e telas médias: a luz azul do retrato vaza para os lados */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 50% at 50% 38%, rgba(47, 140, 255, .28), transparent 70%),
+    linear-gradient(rgba(2, 6, 15, .55), rgba(2, 6, 15, .9)),
+    url("../assets/img/hero.webp") center / cover no-repeat;
+  filter: saturate(1.1);
+}
+
+/* Celular: coluna única */
+.page {
+  width: 100%;
+  max-width: 460px;
+  min-height: 100svh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px rgba(109, 184, 255, .12), 0 0 120px rgba(47, 140, 255, .25);
+}
+
+/* Computador: a página vira uma tela cheia com o HERO.png */
+@media (min-width: 900px) {
+  body::before { display: none; }
+
+  .page {
+    position: relative;
+    max-width: none;
+    height: 100svh;
+    min-height: 640px;
+    box-shadow: none;
+  }
+
+  /* escurece laterais e base para o texto respirar */
+  .page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(to top, rgba(2, 6, 15, .92) 0%, rgba(2, 6, 15, .55) 24%, transparent 48%),
+      linear-gradient(to right,
+        rgba(2, 6, 15, .82) 0%, rgba(2, 6, 15, .35) 26%, transparent 38%,
+        transparent 62%, rgba(2, 6, 15, .35) 74%, rgba(2, 6, 15, .82) 100%);
+  }
+}
