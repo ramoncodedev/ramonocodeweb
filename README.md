@@ -20,9 +20,9 @@ assets/
 
 Telas a partir de 900 px mostram o `hero.webp` em tela cheia; abaixo disso, o `portrait.webp` em coluna única.
 
-## Antes de publicar
+## Contato
 
-No `index.html`, troque `55SEUNUMERO` pelo número do WhatsApp com DDD (ex.: `5573999999999`).
+O botão principal abre o WhatsApp `55 73 98159-8854` (número no `href` do `index.html`).
 
 ## Rodar local
 
